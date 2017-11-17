@@ -66,7 +66,6 @@ const server = http.createServer((req, res) => {
   //up the conditional below:
   const query = req.url.split('?')[1];
   if (query !== undefined) {
-    console.log('defined');
     const letter = querystring.parse(query).letter;
     if (cache[letter] === undefined) {
       cache[letter] = filterByLetter(letter);
@@ -74,7 +73,6 @@ const server = http.createServer((req, res) => {
     res.write(cache[letter]);
     res.end();
   } else {
-    console.log('undefined');
     res.write(cache['animals']);
     res.end();
   }
